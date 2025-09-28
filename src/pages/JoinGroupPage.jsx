@@ -20,7 +20,7 @@ const JoinGroupPage = () => {
   useEffect(() => {
     const fetchGroup = async () => {
       try {
-        const response = await api.get(`/api/groups/join/${inviteCode}`);
+        const response = await api.get(`/groups/join/${inviteCode}`);
         const data = response.data;
         
         setGroup(data.group);

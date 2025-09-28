@@ -10,7 +10,7 @@ export const useGroups = () => {
     return useQuery({
       queryKey: ['adminGroups'],
       queryFn: async () => {
-        const response = await api.get('/api/groups/admin');
+        const response = await api.get('/groups/admin');
         return response.data;
       }
     });
@@ -21,7 +21,7 @@ export const useGroups = () => {
     return useQuery({
       queryKey: ['userGroups'],
       queryFn: async () => {
-        const response = await api.get('/api/groups/my-groups');
+        const response = await api.get('/groups/my-groups');
         return response.data;
       }
     });
@@ -30,7 +30,7 @@ export const useGroups = () => {
   // Create group
   const createGroup = useMutation({
     mutationFn: async (groupData) => {
-      const response = await api.post('/api/groups', groupData);
+      const response = await api.post('/groups', groupData);
       return response.data;
     },
     onSuccess: () => {
@@ -41,7 +41,7 @@ export const useGroups = () => {
   // Join group by invite code
   const joinGroup = useMutation({
     mutationFn: async (inviteCode) => {
-      const response = await api.post(`/api/groups/join/${inviteCode}`);
+      const response = await api.post(`/groups/join/${inviteCode}`);
       return response.data;
     },
     onSuccess: () => {
@@ -52,7 +52,7 @@ export const useGroups = () => {
   // Regenerate invite code
   const regenerateInviteCode = useMutation({
     mutationFn: async (groupId) => {
-      const response = await api.patch(`/api/groups/${groupId}/regenerate-invite`);
+      const response = await api.patch(`/groups/${groupId}/regenerate-invite`);
       return response.data;
     },
     onSuccess: () => {
@@ -63,7 +63,7 @@ export const useGroups = () => {
   // Toggle group status
   const toggleGroupStatus = useMutation({
     mutationFn: async (groupId) => {
-      const response = await api.patch(`/api/groups/${groupId}/toggle-status`);
+      const response = await api.patch(`/groups/${groupId}/toggle-status`);
       return response.data;
     },
     onSuccess: () => {
@@ -74,7 +74,7 @@ export const useGroups = () => {
   // Delete group
   const deleteGroup = useMutation({
     mutationFn: async (groupId) => {
-      const response = await api.delete(`/api/groups/${groupId}`);
+      const response = await api.delete(`/groups/${groupId}`);
       return response.data;
     },
     onSuccess: () => {
@@ -102,7 +102,7 @@ export const useGroupMessages = (groupId) => {
     return useQuery({
       queryKey: ['groupMessages', groupId, page],
       queryFn: async () => {
-        const response = await api.get(`/api/groups/${groupId}/messages?page=${page}&limit=${limit}`);
+        const response = await api.get(`/groups/${groupId}/messages?page=${page}&limit=${limit}`);
         return response.data;
       },
       enabled: !!groupId
@@ -112,7 +112,7 @@ export const useGroupMessages = (groupId) => {
   // Send message
   const sendMessage = useMutation({
     mutationFn: async (content) => {
-      const response = await api.post(`/api/groups/${groupId}/messages`, { content });
+      const response = await api.post(`/groups/${groupId}/messages`, { content });
       return response.data;
     },
     onSuccess: () => {
@@ -125,7 +125,7 @@ export const useGroupMessages = (groupId) => {
     return useQuery({
       queryKey: ['groupMembers', groupId],
       queryFn: async () => {
-        const response = await api.get(`/api/groups/${groupId}/members`);
+        const response = await api.get(`/groups/${groupId}/members`);
         return response.data;
       },
       enabled: !!groupId
@@ -135,7 +135,7 @@ export const useGroupMessages = (groupId) => {
   // Remove member
   const removeMember = useMutation({
     mutationFn: async (userId) => {
-      const response = await api.delete(`/api/groups/${groupId}/members/${userId}`);
+      const response = await api.delete(`/groups/${groupId}/members/${userId}`);
       return response.data;
     },
     onSuccess: () => {

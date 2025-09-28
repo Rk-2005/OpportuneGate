@@ -9,7 +9,7 @@ export const useProfile = () => {
   const { data, isLoading, error } = useQuery({
     queryKey: ['profile'],
     queryFn: async () => {
-      const response = await api.get('/api/profile');
+      const response = await api.get('/profile');
       return response.data;
     },
     staleTime: 5 * 60 * 1000, // 5 minutes
@@ -18,7 +18,7 @@ export const useProfile = () => {
   // Update profile mutation
   const updateMutation = useMutation({
     mutationFn: async (profileData) => {
-      const response = await api.put('/api/profile', profileData);
+      const response = await api.put('/profile', profileData);
       return response.data;
     },
     onSuccess: (data) => {
@@ -33,7 +33,7 @@ export const useProfile = () => {
   // Upload resume mutation
   const uploadResumeMutation = useMutation({
     mutationFn: async (resumeUrl) => {
-      const response = await api.post('/api/profile/resume', { resumeUrl });
+      const response = await api.post('/profile/resume', { resumeUrl });
       return response.data;
     },
     onSuccess: (data) => {

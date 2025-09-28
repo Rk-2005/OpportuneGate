@@ -9,7 +9,7 @@ export const useAuth = () => {
   const { data: user, isLoading, error } = useQuery({
     queryKey: ['user'],
     queryFn: async () => {
-      const response = await api.get('/api/auth/me');
+      const response = await api.get('/auth/me');
       return response.data.user;
     },
     retry: false,
@@ -19,7 +19,7 @@ export const useAuth = () => {
   // Login mutation
   const loginMutation = useMutation({
     mutationFn: async ({ email, password }) => {
-      const response = await api.post('/api/auth/login', { email, password });
+      const response = await api.post('/auth/login', { email, password });
       return response.data;
     },
     onSuccess: (data) => {
@@ -36,7 +36,7 @@ export const useAuth = () => {
   // Register mutation
   const registerMutation = useMutation({
     mutationFn: async (userData) => {
-      const response = await api.post('/api/auth/register', userData);
+      const response = await api.post('/auth/register', userData);
       return response.data;
     },
     onSuccess: (data) => {

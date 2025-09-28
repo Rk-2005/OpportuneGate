@@ -14,7 +14,7 @@ export const useNotifications = (filters = {}) => {
         if (value) params.append(key, value);
       });
       
-      const response = await api.get(`/api/notifications?${params.toString()}`);
+      const response = await api.get(`/notifications?${params.toString()}`);
       return response.data;
     },
     staleTime: 10 * 1000, // 10 seconds
@@ -24,7 +24,7 @@ export const useNotifications = (filters = {}) => {
   // Mark notification as read mutation
   const markAsReadMutation = useMutation({
     mutationFn: async (notificationId) => {
-      const response = await api.patch(`/api/notifications/${notificationId}/read`);
+      const response = await api.patch(`/notifications/${notificationId}/read`);
       return response.data;
     },
     onSuccess: () => {
@@ -38,7 +38,7 @@ export const useNotifications = (filters = {}) => {
   // Mark all notifications as read mutation
   const markAllAsReadMutation = useMutation({
     mutationFn: async () => {
-      const response = await api.patch('/api/notifications/mark-all-read');
+      const response = await api.patch('/notifications/mark-all-read');
       return response.data;
     },
     onSuccess: () => {
@@ -53,7 +53,7 @@ export const useNotifications = (filters = {}) => {
   // Delete notification mutation
   const deleteMutation = useMutation({
     mutationFn: async (notificationId) => {
-      const response = await api.delete(`/api/notifications/${notificationId}`);
+      const response = await api.delete(`/notifications/${notificationId}`);
       return response.data;
     },
     onSuccess: () => {

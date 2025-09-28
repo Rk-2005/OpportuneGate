@@ -14,7 +14,7 @@ export const useOpportunities = (filters = {}) => {
         if (value) params.append(key, value);
       });
       
-      const response = await api.get(`/api/opportunities?${params.toString()}`);
+      const response = await api.get(`/opportunities?${params.toString()}`);
       return response.data;
     },
     staleTime: 30 * 1000, // 30 seconds
@@ -23,7 +23,7 @@ export const useOpportunities = (filters = {}) => {
   // Create opportunity mutation
   const createMutation = useMutation({
     mutationFn: async (opportunityData) => {
-      const response = await api.post('/api/opportunities', opportunityData);
+      const response = await api.post('/opportunities', opportunityData);
       return response.data;
     },
     onSuccess: () => {
@@ -38,7 +38,7 @@ export const useOpportunities = (filters = {}) => {
   // Update opportunity mutation
   const updateMutation = useMutation({
     mutationFn: async ({ id, ...data }) => {
-      const response = await api.put(`/api/opportunities/${id}`, data);
+      const response = await api.put(`/opportunities/${id}`, data);
       return response.data;
     },
     onSuccess: () => {
@@ -53,7 +53,7 @@ export const useOpportunities = (filters = {}) => {
   // Delete opportunity mutation
   const deleteMutation = useMutation({
     mutationFn: async (id) => {
-      const response = await api.delete(`/api/opportunities/${id}`);
+      const response = await api.delete(`/opportunities/${id}`);
       return response.data;
     },
     onSuccess: () => {

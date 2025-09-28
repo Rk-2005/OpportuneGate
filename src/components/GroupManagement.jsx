@@ -82,7 +82,7 @@ const GroupManagement = ({ onCreateGroup }) => {
   const handleShowMembers = async (groupId) => {
     setLoadingStates(prev => ({ ...prev, [`members-${groupId}`]: true }));
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL || 'https://opportunegate-backend.onrender.com/'}/api/groups/${groupId}/members`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'https://opportunegate-backend.onrender.com'}/groups/${groupId}/members`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }

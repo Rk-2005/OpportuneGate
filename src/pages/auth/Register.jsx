@@ -34,7 +34,7 @@ const Register = () => {
 
   const fetchColleges = async () => {
     try {
-      const response = await api.get('/api/auth/colleges');
+      const response = await api.get('/auth/colleges');
       setColleges(response.data.colleges);
     } catch (error) {
       console.error('Failed to fetch colleges:', error);

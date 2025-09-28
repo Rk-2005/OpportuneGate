@@ -14,7 +14,7 @@ export const useApplications = (filters = {}) => {
         if (value) params.append(key, value);
       });
       
-      const response = await api.get(`/api/applications/my-applications?${params.toString()}`);
+      const response = await api.get(`/applications/my-applications?${params.toString()}`);
       return response.data;
     },
     staleTime: 30 * 1000, // 30 seconds
@@ -23,7 +23,7 @@ export const useApplications = (filters = {}) => {
   // Apply to opportunity mutation
   const applyMutation = useMutation({
     mutationFn: async (opportunityId) => {
-      const response = await api.post('/api/applications', { opportunityId });
+      const response = await api.post('/applications', { opportunityId });
       return response.data;
     },
     onSuccess: () => {
@@ -39,7 +39,7 @@ export const useApplications = (filters = {}) => {
   // Update application status mutation (for admin/company)
   const updateStatusMutation = useMutation({
     mutationFn: async ({ id, status, notes, interviewDate, interviewTime }) => {
-      const response = await api.patch(`/api/applications/${id}/status`, {
+      const response = await api.patch(`/applications/${id}/status`, {
         status,
         notes,
         interviewDate,
@@ -58,7 +58,7 @@ export const useApplications = (filters = {}) => {
 
   // Get applications by opportunity (for admin/company)
   const getApplicationsByOpportunity = async (opportunityId) => {
-    const response = await api.get(`/api/applications/opportunity/${opportunityId}`);
+    const response = await api.get(`/applications/opportunity/${opportunityId}`);
     return response.data;
   };
 
