@@ -13,7 +13,7 @@ export const useSocket = () => {
     if (!user) return;
 
     // Connect to socket
-    socketRef.current = io('http://localhost:5000', {
+    socketRef.current = io('https://opportunegate-backend.onrender.com/', {
       auth: {
         token: localStorage.getItem('token'),
       },
