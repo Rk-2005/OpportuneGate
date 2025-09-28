@@ -132,7 +132,7 @@ const AdminDashboard = () => {
       logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1200px-Netflix_2015_logo.svg.png',
       students: [
         { id: 1, name: 'Shivanand Gupta', status: 'Placed', package: '60 LPA', department: 'CSE', email: 'shiv@gmail.com', phone: '+91 9876543230' },
-         { id: 2, name: 'Rupesh Katariya (brilliant student)', status: 'Placed', package: '1 CR', department: 'CSE', email: 'rupesh.katariya@gmail.com', phone: '+91 9876543230' },
+         { id: 2, name: 'Rupesh Katariya (brilliantt student)', status: 'Placed', package: '1 CR', department: 'CSE', email: 'rupesh.katariya@gmail.com', phone: '+91 9876543230' },
      //   { id: 2, name: 'James Wilson', status: 'Final Round', package: 'Pending', department: 'IT', email: 'james.wilson@example.com', phone: '+91 9876543231' },
         //{ id: 3, name: 'Sophia Brown', status: 'Technical Round', package: 'Pending', department: 'CSE', email: 'sophia.brown@example.com', phone: '+91 9876543232' }
       ]
