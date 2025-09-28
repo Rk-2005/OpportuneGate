@@ -113,7 +113,7 @@ function Dashboard() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+    <div className="min-h-screen bg-gradient-to-br  from-slate-50 via-blue-50 to-indigo-50">
       {/* Enhanced Navbar */}
       <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-xl border-b border-gray-200/50 shadow-sm">
         <div className="container mx-auto px-4 sm:px-6 py-3">
@@ -220,7 +220,7 @@ function Dashboard() {
       </nav>
 
       {/* Hero Section */}
-      <section className="container mx-auto px-4 sm:px-6 py-16 lg:py-24">
+      <section className="container mx-auto px-4 py-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Content */}
           <div className="space-y-10">
@@ -308,70 +308,58 @@ function Dashboard() {
             </motion.div>
           </div>
 
-          {/* Right Image - Increased Size */}
-          <motion.div 
-            className="flex justify-center lg:justify-end items-start"
-            initial={{ opacity: 0, scale: 0.95, x: 30 }}
-            animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-          >
-            <div className="relative w-full max-w-2xl">
-              {/* Background decorations */}
-              <div className="absolute -inset-8 bg-gradient-to-r from-blue-400/20 via-indigo-400/20 to-purple-400/20 rounded-3xl blur-3xl"></div>
-              
-              {/* Floating elements */}
-              <motion.div 
-                className="absolute  -left-6 w-24 h-24 bg-blue-500/20 rounded-full blur-xl"
-                animate={{ 
-                  y: [0, -15, 0],
-                }}
-                transition={{ 
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-              <motion.div 
-                className="absolute -bottom-6 -right-6 w-28 h-28 bg-indigo-500/20 rounded-full blur-2xl"
-                animate={{ 
-                  y: [0, 15, 0],
-                }}
-                transition={{ 
-                  duration: 5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 1
-                }}
-              />
-              
-              {/* Main image container - Increased Size */}
-              <div className="relative bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-2xl p-4 border border-white/50">
-                <img
-                  src={mainimg}
-                  alt="Career development platform showing students and professionals collaborating"
-                  className="w-full h-50 lg:h-[500px] rounded-xl shadow-lg object-cover"
-                />
-              </div>
-              
-              {/* Floating success card */}
-              <motion.div 
-                className="absolute -bottom-6 left-6 bg-white rounded-2xl p-5 shadow-2xl border border-gray-100"
-                initial={{ scale: 0, y: 20 }}
-                animate={{ scale: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 1 }}
-              >
-                <div className="flex items-center space-x-4">
-                  <div className="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center">
-                    <FiAward className="w-7 h-7 text-green-600" />
-                  </div>
-                  <div>
-                    <div className="font-bold text-gray-900 text-lg">2,500+ Hires</div>
-                    <div className="text-sm text-gray-600">This Month</div>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
+         {/* Right Image - Moved Slightly Up */}
+<motion.div 
+  className="flex justify-center lg:justify-end items-start"
+  initial={{ opacity: 0, scale: 0.95, x: 30 }}
+  animate={{ opacity: 1, scale: 1, x: 0 }}
+  transition={{ duration: 0.7, delay: 0.3 }}
+>
+  <div className="relative w-full max-w-2xl -mt-30"> {/* <- Added -mt-10 to move image up */}
+    {/* Background decorations */}
+    <div className="absolute -inset-8 bg-gradient-to-r from-blue-400/20 via-indigo-400/20 to-purple-400/20 rounded-3xl blur-3xl"></div>
+    
+    {/* Floating elements */}
+    <motion.div 
+      className="absolute -left-6 w-24 h-24 bg-blue-500/20 rounded-full blur-xl"
+      animate={{ y: [0, -15, 0] }}
+      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+    />
+    <motion.div 
+      className="absolute -bottom-6 -right-6 w-28 h-28 bg-indigo-500/20 rounded-full blur-2xl"
+      animate={{ y: [0, 15, 0] }}
+      transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+    />
+    
+    {/* Main image container */}
+    <div className="relative bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-2xl p-4 border border-white/50">
+      <img
+        src={mainimg}
+        alt="Career development platform showing students and professionals collaborating"
+        className="w-full h-64 lg:h-[400px] rounded-xl shadow-lg object-cover"
+      />
+    </div>
+    
+    {/* Floating success card */}
+    <motion.div 
+      className="absolute -bottom-6 left-6 bg-white rounded-2xl p-5 shadow-2xl border border-gray-100"
+      initial={{ scale: 0, y: 20 }}
+      animate={{ scale: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 1 }}
+    >
+      <div className="flex items-center space-x-4">
+        <div className="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center">
+          <FiAward className="w-7 h-7 text-green-600" />
+        </div>
+        <div>
+          <div className="font-bold text-gray-900 text-lg">2,500+ Hires</div>
+          <div className="text-sm text-gray-600">This Month</div>
+        </div>
+      </div>
+    </motion.div>
+  </div>
+</motion.div>
+
         </div>
       </section>
 
