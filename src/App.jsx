@@ -1,8 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, Form } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-
+import Formm from "./components/Form"
 import { AuthProvider } from './contexts/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 
@@ -17,6 +17,8 @@ import StudentOpportunities from './pages/student/Opportunities';
 import AdminDashboard from './pages/admin/Dashboard';
 import CompanyDashboard from './pages/company/Dashboard';
 import Dashboard from './components/Dashboard';
+import Blog from './components/Blog';
+import AboutUs from './components/Aboutus';
 
 // Create a client
 const queryClient = new QueryClient({
@@ -67,10 +69,11 @@ function App() {
                   </ProtectedRoute>
                 }
               />
-              
+              <Route path='/form' element={<Formm></Formm>}></Route>
               {/* Default redirect */}
-              <Route path="/" element={<Dashboard/>} />
-              
+              <Route path="/" element={<Dashboard></Dashboard>}/>
+              <Route path='/blog' element={<Blog></Blog>}></Route>
+               <Route path='/Aboutus' element={<AboutUs></AboutUs>}></Route>
               {/* 404 */}
               <Route path="*" element={<Navigate to="/login" replace />} />
             </Routes>

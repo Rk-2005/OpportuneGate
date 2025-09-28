@@ -29,11 +29,11 @@ function Dashboard() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate=useNavigate();
   const navItems = [
-    { name: "Home", icon: <FiHome /> },
-    { name: "Institutions", icon: <FaBuilding /> },
-    { name: "Employers", icon: <FiBriefcase /> },
-    { name: "About Us", icon: <FiInfo /> },
-    { name: "Blogs", icon: <FiBook /> },
+    { name: "Home", icon: <FiHome /> ,link:"/"},
+    { name: "Institutions", icon: <FaBuilding />,link:"/Form" },
+    { name: "Employers", icon: <FiBriefcase /> ,link:"/Form"},
+    { name: "About Us", icon: <FiInfo />,link:"/aboutus" },
+    { name: "Blogs", icon: <FiBook />,link:"/blog" },
   ];
 
   const features = [
@@ -113,7 +113,7 @@ function Dashboard() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br  from-slate-50 via-blue-50 to-indigo-50">
+    <div className="min-h-screen bg-gradient-to-br px-1  from-slate-50 via-blue-50 to-indigo-50">
       {/* Enhanced Navbar */}
       <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-xl border-b border-gray-200/50 shadow-sm">
         <div className="container mx-auto px-4 sm:px-6 py-3">
@@ -137,7 +137,7 @@ function Dashboard() {
               {navItems.map((item, index) => (
                 <motion.a
                   key={item.name}
-                  href="#"
+                  href={item.link}
                   className="relative px-5 py-2.5 text-gray-700 hover:text-blue-600 font-medium transition-all duration-200 text-sm rounded-lg mx-1 hover:bg-blue-50"
                   whileHover={{ y: -1 }}
                   transition={{ duration: 0.2 }}
@@ -258,7 +258,25 @@ function Dashboard() {
                 </p>
               </div>
             </motion.div>
-
+            <div className="flex">
+              <div>
+                <span className="font-bold text-2xl ml-1 text-slate-700">For Employers</span>
+                <div className="pt-3">
+                  <button className="bg-slate-900 text-white px-3 py-2 rounded-xl " 
+                  onClick={()=>{
+                    navigate("/form")
+                  }} >Power Up Your Talent Search</button>
+                </div>
+              </div>
+              <div className="mx-20">
+                <span className="font-bold text-2xl ml-1 text-slate-700">For Institutions</span>
+                <div className="pt-3">
+                  <button className="bg-slate-900 text-white px-3 py-2 rounded-xl" onClick={()=>{
+                    navigate("/form")
+                  }} >Upgrade to a Smart Campus</button>
+                </div>
+              </div>
+            </div>
             {/* Stats Section */}
             <motion.div 
               className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6"
@@ -289,7 +307,10 @@ function Dashboard() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <motion.button 
+              <motion.button  
+               onClick={()=>{
+                  navigate("/login")
+                }}
                 className="group bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:from-blue-700 hover:to-indigo-800 transition-all duration-200 flex items-center justify-center space-x-3 shadow-lg hover:shadow-xl"
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
@@ -315,7 +336,7 @@ function Dashboard() {
   animate={{ opacity: 1, scale: 1, x: 0 }}
   transition={{ duration: 0.7, delay: 0.3 }}
 >
-  <div className="relative w-full max-w-2xl -mt-30"> {/* <- Added -mt-10 to move image up */}
+  <div className="relative w-full max-w-2xl -mt-70"> {/* <- Added -mt-10 to move image up */}
     {/* Background decorations */}
     <div className="absolute -inset-8 bg-gradient-to-r from-blue-400/20 via-indigo-400/20 to-purple-400/20 rounded-3xl blur-3xl"></div>
     
@@ -564,7 +585,9 @@ function Dashboard() {
               <ul className="space-y-3 text-gray-400">
                 <li><a href="#" className="hover:text-white transition-colors">About Us</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
+                <li><a onClick= {()=>{
+                  navigate("/blog")
+                }} className="hover:text-white transition-colors">Blog</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
               </ul>
             </div>
