@@ -16,6 +16,7 @@ import StudentDashboard from './pages/student/Dashboard';
 import StudentOpportunities from './pages/student/Opportunities';
 import AdminDashboard from './pages/admin/Dashboard';
 import CompanyDashboard from './pages/company/Dashboard';
+import Dashboard from './components/Dashboard';
 
 // Create a client
 const queryClient = new QueryClient({
@@ -68,7 +69,7 @@ function App() {
               />
               
               {/* Default redirect */}
-              <Route path="/" element={<Navigate to="/login" replace />} />
+              <Route path="/" element={<Dashboard/>} />
               
               {/* 404 */}
               <Route path="*" element={<Navigate to="/login" replace />} />
