@@ -67,7 +67,7 @@ const AdminDashboard = () => {
   };
 
   // Mock student count (would come from API in real app)
-  const totalStudents = 1250;
+  const totalStudents = 125;
 
   // Mock companies data
   const companies = [
@@ -88,7 +88,7 @@ const AdminDashboard = () => {
       name: 'Microsoft',
       logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/1024px-Microsoft_logo.svg.png',
       students: [
-        { id: 1, name: 'Jayesh Kriplani', status: 'Placed', package: '38 LPA', department: 'CSE', email: 'Jayesh_k@gamil.com', phone: '+91 9876543215' },
+        { id: 1, name: 'Jayesh Kriplani', status: 'Placed', package: '38 LPA', department: 'CSE', email: 'kriplanijj@rknec.edu', phone: '+91 87679550106' },
         { id: 2, name: 'David Warner', status: 'Rejected', package: 'N/A', department: 'IT', email: 'david.Warner@gmail.com', phone: '+91 9876543216' },
         { id: 3, name: 'Alex Chen', status: 'Interview', package: '35 LPA', department: 'ECE', email: 'alex.chen@example.com', phone: '+91 9876543217' },
         { id: 4, name: 'Aditi ', status: 'Applied', package: 'Pending', department: 'ME', email: 'Aditi@gmail.com', phone: '+91 9876543218' }
@@ -303,9 +303,18 @@ const AdminDashboard = () => {
             >
               Companies
             </button>
-
+             <button
+              onClick={() => setActiveNav('Analytics')}
+              className={`py-4 px-1 text-sm font-medium border-b-2 transition-colors ${
+                activeNav === 'Analytics'
+                  ? 'border-green-500 text-green-600'
+                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+              }`}
+            >
+              Analytics
+            </button>
             {/* Other Links - Coming Soon */}
-            {["Students", "Analytics"].map((item) => (
+            {["Students"].map((item) => (
               <div key={item} className="relative group">
                 <button
                   className="border-b-2 border-transparent py-4 px-1 text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 flex items-center gap-2 cursor-not-allowed"
@@ -538,7 +547,215 @@ const AdminDashboard = () => {
             {activeTab === 'opportunities' && <AdminOpportunitiesView />}
           </>
         )}
+        {activeNav === 'Analytics' && (
+  <div className="p-6 bg-gray-50 min-h-screen">
+    {/* Header Stats */}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+        <div className="flex justify-between items-start mb-4">
+          <h3 className="text-gray-600 font-medium">Total Students</h3>
+          <div className="text-2xl">👥</div>
+        </div>
+        <div className="text-3xl font-bold text-gray-900 mb-2">125</div>
+        <div className="text-green-600 text-sm font-medium">+5% from last year</div>
+      </div>
+      
+      <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+        <div className="flex justify-between items-start mb-4">
+          <h3 className="text-gray-600 font-medium">Placed Students</h3>
+          <div className="text-2xl">✅</div>
+        </div>
+        <div className="text-3xl font-bold text-gray-900 mb-2">24</div>
+        <div className="text-green-600 text-sm font-medium">+8% this month</div>
+      </div>
+      
+      <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+        <div className="flex justify-between items-start mb-4">
+          <h3 className="text-gray-600 font-medium">Placement Rate</h3>
+          <div className="text-2xl">📊</div>
+        </div>
+        <div className="text-3xl font-bold text-gray-900 mb-2">1.92%</div>
+        <div className="text-green-600 text-sm font-medium">+0.8% growth</div>
+      </div>
+      
+      <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+        <div className="flex justify-between items-start mb-4">
+          <h3 className="text-gray-600 font-medium">Avg Package</h3>
+          <div className="text-2xl">💰</div>
+        </div>
+        <div className="text-3xl font-bold text-gray-900 mb-2">47.2 LPA</div>
+        <div className="text-green-600 text-sm font-medium">+12% increase</div>
+      </div>
+    </div>
 
+    {/* Charts Grid */}
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+      {/* Placement Trends Chart */}
+      <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+        <div className="flex justify-between items-center mb-6">
+          <h3 className="text-lg font-semibold text-gray-900">Placement Trends</h3>
+          <select className="text-sm border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option>Last 6 Months</option>
+            <option>Last Year</option>
+            <option>All Time</option>
+          </select>
+        </div>
+        <div className="h-64">
+          <div className="flex items-end justify-between h-48 gap-4">
+            {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'].map((month, index) => (
+              <div key={month} className="flex flex-col items-center flex-1">
+                <div className="text-xs text-gray-600 mb-2">{month}</div>
+                <div className="w-full bg-gray-100 rounded-t-lg relative h-40">
+                  <div 
+                    className="w-full bg-blue-500 rounded-t-lg absolute bottom-0 transition-all duration-500"
+                    style={{height: `${[15, 25, 40, 30, 60, 80][index]}%`}}
+                  ></div>
+                </div>
+                <div className="text-sm font-medium text-gray-900 mt-2">{[3, 5, 8, 6, 12, 16][index]}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Department Distribution */}
+      <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+        <div className="flex justify-between items-center mb-6">
+          <h3 className="text-lg font-semibold text-gray-900">Department Distribution</h3>
+        </div>
+        <div className="space-y-4">
+          {[
+            {dept: 'CSE', percentage: 65, color: 'bg-blue-500'},
+            {dept: 'IT', percentage: 20, color: 'bg-green-500'},
+            {dept: 'ECE', percentage: 10, color: 'bg-yellow-500'},
+            {dept: 'ME', percentage: 5, color: 'bg-red-500'}
+          ].map((item, index) => (
+            <div key={item.dept} className="flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <div className={`w-4 h-4 rounded ${item.color}`}></div>
+                <span className="text-sm font-medium text-gray-700">{item.dept}</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <div className="w-32 bg-gray-200 rounded-full h-2">
+                  <div 
+                    className={`h-2 rounded-full ${item.color} transition-all duration-500`}
+                    style={{width: `${item.percentage}%`}}
+                  ></div>
+                </div>
+                <span className="text-sm font-semibold text-gray-900 w-12">{item.percentage}%</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Company Performance - Full Width */}
+      <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 lg:col-span-2">
+        <div className="flex justify-between items-center mb-6">
+          <h3 className="text-lg font-semibold text-gray-900">Company Performance</h3>
+        </div>
+        <div className="space-y-4">
+          {companies.map(company => {
+            const placedCount = company.students.filter(s => s.status === 'Placed').length;
+            const totalStudents = company.students.length;
+            const placementRate = totalStudents > 0 ? (placedCount / totalStudents * 100).toFixed(1) : 0;
+            
+            return (
+              <div key={company.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                <div className="flex items-center space-x-4 flex-1">
+                  <img src={company.logo} alt={company.name} className="w-10 h-10 object-contain" />
+                  <span className="font-medium text-gray-900">{company.name}</span>
+                </div>
+                <div className="flex items-center space-x-4 flex-1">
+                  <div className="w-full bg-gray-200 rounded-full h-3">
+                    <div 
+                      className="h-3 rounded-full bg-green-500 transition-all duration-500"
+                      style={{width: `${placementRate}%`}}
+                    ></div>
+                  </div>
+                  <span className="text-sm font-semibold text-gray-900 w-16">{placementRate}%</span>
+                </div>
+                <div className="text-sm text-gray-600 w-24 text-right">
+                  {placedCount}/{totalStudents} placed
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Application Status */}
+      <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+        <div className="flex justify-between items-center mb-6">
+          <h3 className="text-lg font-semibold text-gray-900">Application Status</h3>
+        </div>
+        <div className="space-y-4">
+          {[
+            {status: 'Placed', count: 24, color: 'bg-green-500'},
+            {status: 'Interview', count: 8, color: 'bg-blue-500'},
+            {status: 'Applied', count: 15, color: 'bg-yellow-500'},
+            {status: 'Rejected', count: 3, color: 'bg-red-500'},
+            {status: 'Technical Round', count: 5, color: 'bg-purple-500'}
+          ].map(item => (
+            <div key={item.status} className="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg">
+              <div className="flex items-center space-x-3">
+                <div className={`w-3 h-3 rounded-full ${item.color}`}></div>
+                <span className="text-sm font-medium text-gray-700">{item.status}</span>
+              </div>
+              <div className="flex items-center space-x-4">
+                <span className="text-sm text-gray-600">{item.count} students</span>
+                <span className="text-sm font-semibold text-gray-900 w-12">
+                  {((item.count / 55) * 100).toFixed(1)}%
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    {/* Top Performers */}
+    <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+      <div className="flex justify-between items-center mb-6">
+        <h3 className="text-lg font-semibold text-gray-900">Top Performers</h3>
+      </div>
+      <div className="space-y-3">
+        {companies.flatMap(company => 
+          company.students
+            .filter(student => student.status === 'Placed')
+            .map(student => ({...student, company: company.name}))
+        )
+        .sort((a, b) => {
+          const aPackage = parseInt(a.package) || 0;
+          const bPackage = parseInt(b.package) || 0;
+          return bPackage - aPackage;
+        })
+        .slice(0, 5)
+        .map((student, index) => (
+          <div key={student.id} className="flex items-center justify-between p-4 bg-gradient-to-r from-gray-50 to-white rounded-lg border border-gray-100 hover:shadow-md transition-shadow">
+            <div className="flex items-center space-x-4">
+              <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold ${
+                index === 0 ? 'bg-yellow-500' : 
+                index === 1 ? 'bg-gray-400' : 
+                index === 2 ? 'bg-orange-500' : 'bg-blue-500'
+              }`}>
+                {index + 1}
+              </div>
+              <div>
+                <div className="font-semibold text-gray-900">{student.name}</div>
+                <div className="text-sm text-gray-600">{student.company}</div>
+              </div>
+            </div>
+            <div className="text-right">
+              <div className="font-bold text-gray-900 text-lg">{student.package}</div>
+              <div className="text-sm text-gray-600">{student.department}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+)}
         {activeNav === 'companies' && (
           <div>
             <div className="mb-8">
