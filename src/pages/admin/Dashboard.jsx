@@ -563,7 +563,7 @@ const AdminDashboard = () => {
       <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
         <div className="flex justify-between items-start mb-4">
           <h3 className="text-gray-600 font-medium">Placed Students</h3>
-          <div className="text-2xl">✅</div>
+          <div className="text-2xl"></div>
         </div>
         <div className="text-3xl font-bold text-gray-900 mb-2">24</div>
         <div className="text-green-600 text-sm font-medium">+8% this month</div>
@@ -572,7 +572,7 @@ const AdminDashboard = () => {
       <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
         <div className="flex justify-between items-start mb-4">
           <h3 className="text-gray-600 font-medium">Placement Rate</h3>
-          <div className="text-2xl">📊</div>
+          <div className="text-2xl"></div>
         </div>
         <div className="text-3xl font-bold text-gray-900 mb-2">1.92%</div>
         <div className="text-green-600 text-sm font-medium">+0.8% growth</div>
@@ -581,7 +581,7 @@ const AdminDashboard = () => {
       <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
         <div className="flex justify-between items-start mb-4">
           <h3 className="text-gray-600 font-medium">Avg Package</h3>
-          <div className="text-2xl">💰</div>
+          <div className="text-2xl"></div>
         </div>
         <div className="text-3xl font-bold text-gray-900 mb-2">47.2 LPA</div>
         <div className="text-green-600 text-sm font-medium">+12% increase</div>
