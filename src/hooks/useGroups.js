@@ -41,11 +41,17 @@ export const useGroups = () => {
   // Join group by invite code
   const joinGroup = useMutation({
     mutationFn: async (inviteCode) => {
+      console.log('Sending join group request for invite code:', inviteCode);
       const response = await api.post(`/groups/join/${inviteCode}`);
+      console.log('Join group response:', response.data);
       return response.data;
     },
-    onSuccess: () => {
+    onSuccess: (data) => {
+      console.log('Join group mutation successful:', data);
       queryClient.invalidateQueries({ queryKey: ['userGroups'] });
+    },
+    onError: (error) => {
+      console.error('Join group mutation error:', error);
     }
   });
 

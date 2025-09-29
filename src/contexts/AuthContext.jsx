@@ -30,11 +30,14 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const checkAuth = async () => {
       const token = localStorage.getItem('token');
+      console.log('AuthContext: Checking auth, token exists:', !!token);
       if (token) {
         try {
           const response = await api.get('/auth/me');
+          console.log('AuthContext: User authenticated:', response.data.user);
           setUser(response.data.user);
         } catch (error) {
+          console.log('AuthContext: Auth check failed, clearing token:', error);
           localStorage.removeItem('token');
           delete api.defaults.headers.common['Authorization'];
         }
@@ -47,9 +50,11 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
+      console.log('AuthContext: Attempting login for:', email);
       const response = await api.post('/auth/login', { email, password });
       const { token, user } = response.data;
       
+      console.log('AuthContext: Login successful, setting user:', user);
       localStorage.setItem('token', token);
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       setUser(user);
