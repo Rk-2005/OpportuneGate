@@ -268,7 +268,7 @@ const StudentDashboard = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <h1 className="text-xl font-semibold text-gray-900">OpportuneGate</h1>
+              <h1 className="text-xl font-semibold text-gray-900">OpportunityGate</h1>
               <span className="ml-4 px-2 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded-full">
                 Student
               </span>
