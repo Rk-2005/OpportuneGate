@@ -583,7 +583,7 @@ const AdminDashboard = () => {
           <h3 className="text-gray-600 font-medium">Avg Package</h3>
           <div className="text-2xl"></div>
         </div>
-        <div className="text-3xl font-bold text-gray-900 mb-2">47.2 LPA</div>
+        <div className="text-3xl  font-bold text-gray-900 mb-2">47.2 LPA</div>
         <div className="text-green-600 text-sm font-medium">+12% increase</div>
       </div>
     </div>
