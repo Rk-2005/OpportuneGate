@@ -13,6 +13,8 @@ import ApplicationStatusTracker from '../../components/ApplicationStatusTracker'
 import StudentOpportunities from './Opportunities';
 import { LogOut, User, Bell, Briefcase, FileText, Plus, Eye, Calendar, MapPin, Building } from 'lucide-react';
 import { format } from 'date-fns';
+import Applications from '../../components/Applications';
+import Profile from '../../components/Profile';
 
 // Real-time notifications panel
 const NotificationsPanel = () => {
@@ -318,13 +320,14 @@ const StudentDashboard = () => {
               }`}
             >
               Opportunities
-            </Link>
-            <a href="#" className="border-b-2 border-transparent py-4 px-1 text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
+            </Link >
+            
+            <Link to="/student/applications" className="border-b-2 border-transparent py-4 px-1 text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
               Applications
-            </a>
-            <a href="#" className="border-b-2 border-transparent py-4 px-1 text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
+            </Link>
+            <Link to="/student/profile" className="border-b-2 border-transparent py-4 px-1 text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
               Profile
-            </a>
+            </Link>
           </div>
         </div>
       </nav>
@@ -371,7 +374,9 @@ const StudentDashboard = () => {
               </div>
             </>
           } />
+           <Route path="/profile" element={<Profile />} />
           <Route path="/opportunities" element={<StudentOpportunities />} />
+           <Route path="/applications" element={<Applications />} />
           <Route path="/" element={<Navigate to="/student/dashboard" replace />} />
         </Routes>
       </main>
