@@ -26,6 +26,7 @@ function Form() {
     e.preventDefault();
     console.log('Form submitted:', formData);
     setIsSubmitted(true);
+    navi("/thanks");
   };
 
   const handleGoBack = () => {

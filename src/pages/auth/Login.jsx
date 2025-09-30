@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { Eye, EyeOff, Mail, Lock } from 'lucide-react';
+import Navbar from '../../components/Navbar';
 
 const Login = () => {
   const [selectedRole, setSelectedRole] = useState('admin');
@@ -90,6 +91,8 @@ const Login = () => {
   };
 
   return (
+    <>
+    <Navbar></Navbar>
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
@@ -234,6 +237,7 @@ const Login = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

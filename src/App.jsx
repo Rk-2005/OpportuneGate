@@ -19,6 +19,7 @@ import CompanyDashboard from './pages/company/Dashboard';
 import Dashboard from './components/Dashboard';
 import Blog from './components/Blog';
 import AboutUs from './components/Aboutus';
+import Thanks from './components/Thanks';
 
 // Create a client
 const queryClient = new QueryClient({
@@ -74,6 +75,7 @@ function App() {
               <Route path="/" element={<Dashboard></Dashboard>}/>
               <Route path='/blog' element={<Blog></Blog>}></Route>
                <Route path='/Aboutus' element={<AboutUs></AboutUs>}></Route>
+               <Route path="/thanks" element={<Thanks />}></Route>
               {/* 404 */}
               <Route path="*" element={<Navigate to="/login" replace />} />
             </Routes>
