@@ -372,7 +372,7 @@ const AdminDashboard = () => {
                       Placed Students
                     </p>
                     <p className="text-2xl font-semibold text-gray-900">
-                      {placedApplications}
+                      {24}
                     </p>
                   </div>
                 </div>
@@ -388,7 +388,7 @@ const AdminDashboard = () => {
                       Placement Rate
                     </p>
                     <p className="text-2xl font-semibold text-gray-900">
-                      {placementRate}%
+                      {1.92}%
                     </p>
                   </div>
                 </div>
